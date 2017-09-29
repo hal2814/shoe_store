@@ -1,0 +1,49 @@
+<br>
+<div class="row">
+  <div class="col">
+    <% if @brands.any? %>
+      <div  class="card card-inverse" style="background-color: #333; border-color: #333;">
+        <div class="card-body">
+          <table class="table table-hover table-bordered">
+            <thead class="thead text-black bg-light">
+              <tr>
+                <th>Shoe brand</th>
+                <th>View</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @brands.each do |brand| %>
+                <tr class="table-light">
+                  <td class="align-middle"><%= brand.brand_name %></td>
+                  <td style="text-align: center;">
+                    <a href="/brand/<%= brand.id %>">
+                      <button class="btn btn-success" type="button">View Store Page</button>
+                    </a>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <div  class="card card-inverse" style="background-color: #333; border-color: #333;">
+      <div class="card-body text-white">
+        <h1>Add brands</h1>
+
+        <form action="/add_brand" method="post">
+          <div class="form-group">
+            <label for="brand_name">Store: </label>
+            <input id="brand_name" name="brand_name" class="form-control" type="text">
+          </div>
+          <button type="submit" class="btn btn-warning">Add brand</button>
+        </form>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>

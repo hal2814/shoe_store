@@ -20,3 +20,14 @@ post '/add_store' do
   store = Store.create({:store_name => store_name})
   redirect('/add_store')
 end
+
+get '/add_brand' do
+  @brands = Brand.all()
+  erb(:add_brand)
+end
+
+post '/add_brand' do
+  brand_name = params['brand_name']
+  brand = Brand.create({:brand_name => brand_name})
+  redirect('/add_brand')
+end
