@@ -1,3 +1,4 @@
 class Brand <ActiveRecord::Base
-  belongs_to(:store)
+  has_many :sjoins
+  has_many :stores, through: :sjoins
 end
