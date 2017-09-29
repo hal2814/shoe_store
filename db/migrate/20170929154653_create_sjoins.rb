@@ -5,5 +5,6 @@ class CreateSjoins < ActiveRecord::Migration[5.1]
       t.column(:brand_id, :integer)
 
       t.timestamps()
+    end
   end
 end

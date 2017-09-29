@@ -5,5 +5,6 @@ class CreateBrands < ActiveRecord::Migration[5.1]
       t.column(:price, :integer)
 
       t.timestamps()
+    end
   end
 end
