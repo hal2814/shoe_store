@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col">
+    <div class="card bg-light">
+      <div class="card-body">
+        <h4><%=@store.store_name%></h4>
+        <% @store_brands.each do |brand| %>
+          <h4> <a href="/brand/<%=brand.id%>"> <%=brand.brand_name%></a></h4>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <div  class="card card-inverse" style="background-color: #333; border-color: #333;">
+      <div class="card-body text-white">
+        <h1>Add brands to this store</h1>
+
+        <form action="/store/<%=@store.id%>" method="post">
+          <div class="form-group">
+
+            <select id="brand_name" name="brand_name" class="form-control" type="text">
+              <% @brands.each do |b| %>
+                <option value="<%=b.id%>"><%=b.brand_name%></option>
+              <% end %>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-warning">Add brand</button>
+        </form>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>

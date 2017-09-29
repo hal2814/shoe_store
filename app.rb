@@ -31,3 +31,23 @@ post '/add_brand' do
   brand = Brand.create({:brand_name => brand_name})
   redirect('/add_brand')
 end
+
+get '/store/:id' do
+  @store = Store.find(params[:id])
+  @store_brands = @store.brands
+  @brands = Brand.all()
+  erb(:store)
+end
+
+post '/store/:id' do
+  store = Store.find(params[:id])
+  brand_id = params['brand_name']
+  sjoin = Sjoin.create({:store_id => store.id, :brand_id => brand_id})
+
+  redirect('/store/#{store.id}')
+end
+
+get '/brand/:id' do
+  @brand = Brand.find(params[:id])
+  erb(:brand)
+end
