@@ -14,3 +14,9 @@ get '/add_store' do
   @stores = Store.all()
   erb(:add_store)
 end
+
+post '/add_store' do
+  store_name = params['store_name']
+  store = Store.create({:store_name => store_name})
+  redirect('/add_store')
+end
