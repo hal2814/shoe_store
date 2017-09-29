@@ -1,0 +1,10 @@
+<h3>Oops something went wrong:</h3>
+<img src="img/error.webp">
+<ul>
+  <% @an_errored_object.errors().full_messages().each() do |message| %>
+    <li><%= message %></li>
+  <% end %>
+</ul>
+<script>
+    document.write('<a href="' + document.referrer + '">Go Back</a>');
+</script>

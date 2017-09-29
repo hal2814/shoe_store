@@ -34,7 +34,13 @@ end
 post '/add_brand' do
   brand_name = params['brand_name']
   price = params['price']
-  brand = Brand.create({:brand_name => brand_name, :price => price})
+  brand = Brand.new({:brand_name => brand_name, :price => price})
+  if brand.save
+    redirect("/add_brand")
+  else
+    @an_errored_object = brand
+    erb(:errors)
+  end
   redirect('/add_brand')
 end
 
