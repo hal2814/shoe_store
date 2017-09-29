@@ -9,3 +9,8 @@ get '/' do
   @stores = Store.all()
   erb(:index)
 end
+
+get '/add_store' do
+  @stores = Store.all()
+  erb(:add_store)
+end
