@@ -1,0 +1,31 @@
+<br>
+<div class="row">
+  <div class="col">
+    <% if @stores.any? %>
+      <div  class="card card-inverse" style="background-color: #333; border-color: #333;">
+        <div class="card-body">
+          <table class="table table-hover table-bordered">
+            <thead class="thead text-black bg-light">
+              <tr>
+                <th>Shoe store</th>
+                <th>View</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @stores.each do |store| %>
+                <tr class="table-light">
+                  <td class="align-middle"><%= store.store_name %></td>
+                  <td style="text-align: center;">
+                    <a href="/store/<%= store.id %>">
+                      <button class="btn btn-warning" type="button">View Store Page</button>
+                    </a>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
