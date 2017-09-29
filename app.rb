@@ -42,9 +42,11 @@ end
 post '/store/:id' do
   store = Store.find(params[:id])
   brand_id = params['brand_name']
-  sjoin = Sjoin.create({:store_id => store.id, :brand_id => brand_id})
-
-  redirect('/store/#{store.id}')
+  sjoins = Sjoin.all()
+  if (sjoins.exists?(:brand_id => brand_id, :store_id => store.id)) == false
+    Sjoin.create({:store_id => store.id, :brand_id => brand_id})
+  end
+  redirect("/store/#{store.id}")
 end
 
 get '/brand/:id' do
