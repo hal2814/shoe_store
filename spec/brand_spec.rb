@@ -6,6 +6,11 @@ describe(Brand) do
       expect(test_brand.save()).to(eq(false))
   end
 
+  it("validates name doesn't exceed 100 characters") do
+      test_brand = Brand.new({:brand_name => "one hundred characters, one hundred characters, one hundred characters, one hundred characters, one hundred characters"})
+      expect(test_brand.save()).to(eq(false))
+  end
+
   it("uppercase each word input for brand name") do
       test_brand = Brand.new({:brand_name => "nike"})
       test_brand.save()

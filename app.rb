@@ -16,13 +16,18 @@ get '/add_store' do
 end
 
 post '/add_store' do
-  store_name = params['store_name']
-  store = Store.new({:store_name => store_name})
-  if store.save
-    redirect("/add_store")
+  store_name = (params['store_name']).split.map(&:capitalize).join(' ')
+  stores = Store.all()
+  if (stores.exists?({:store_name => store_name})) == false
+    store = Store.new({:store_name => store_name})
+    if store.save
+      redirect("/add_store")
+    else
+      @an_errored_object = store
+      erb(:errors)
+    end
   else
-    @an_errored_object = store
-    erb(:errors)
+    erb(:name_exists)
   end
 end
 
@@ -32,16 +37,20 @@ get '/add_brand' do
 end
 
 post '/add_brand' do
-  brand_name = params['brand_name']
+  brand_name = (params['brand_name']).split.map(&:capitalize).join(' ')
   price = params['price']
-  brand = Brand.new({:brand_name => brand_name, :price => price})
-  if brand.save
-    redirect("/add_brand")
+  brands = Brand.all()
+  if (brands.exists?({:brand_name => brand_name})) == false
+    brand = Brand.new({:brand_name => brand_name, :price => price})
+    if brand.save
+      redirect("/add_brand")
+    else
+      @an_errored_object = brand
+      erb(:errors)
+    end
   else
-    @an_errored_object = brand
-    erb(:errors)
+    erb(:name_exists)
   end
-  redirect('/add_brand')
 end
 
 get '/store/:id' do
