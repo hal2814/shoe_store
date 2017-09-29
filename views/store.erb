@@ -2,7 +2,7 @@
   <div class="col">
     <div class="card bg-light">
       <div class="card-body">
-        <h4><%=@store.store_name%></h4>
+        <h4><%=@store.store_name%></h4><h5> carries these brands:</h5>
         <% @store_brands.each do |brand| %>
           <h4> <a href="/brand/<%=brand.id%>"> <%=brand.brand_name%></a></h4>
         <% end %>
@@ -10,6 +10,7 @@
     </div>
   </div>
 </div>
+<br>
 <div class="row">
   <div class="col">
     <div  class="card card-inverse" style="background-color: #333; border-color: #333;">
@@ -30,6 +31,8 @@
         <br>
       </div>
     </div>
+    <br>
     <a href="/"><button type="button" class="btn btn-dark">Home</button></a>
+    <a href="/edit_store/<%= @store.id %>"><button type="button" class="btn btn-danger">Edit store</button></a>
   </div>
 </div>

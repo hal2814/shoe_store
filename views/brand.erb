@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col">
+    <div class="card bg-light">
+      <div class="card-body">
+        <h4><%=@brand.brand_name%></h4><h6>$<%=@brand.price%>.00</h6><h5> can be found in these stores:</h5>
+        <% @stores.each do |store| %>
+          <h4> <a href="/store/<%=store.id%>"> <%=store.store_name%></a></h4>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
